@@ -1,1 +1,329 @@
-/* H5对象的全局样式 */
+body{
+	margin: 0px;
+	padding: 0px;
+}
+.component{
+		width: 50%;
+		height: 30px;
+		margin-bottom: 20px;
+		background-color: #eee;
+		display: none;;
+}
+/* h5对象的全局样式 */
+.h5{
+	height: 100%;
+}
+.h5-page{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background-color: $ddd;
+	background-image: url(../imgs/page_bg.png);
+	background-size: cover;
+	background-repeat: no-repeat;
+	overflow: hidden;
+}
+
+/* 基本图文组件样式 */
+.h5-component{
+	position: absolute;
+	background-size: 100%;
+	background-repeat: no-repeat;
+
+}
+
+/*散点图组件样式*/
+.h5-component-point{}
+.h5-component-point .point{
+	position: absolute;
+	right:0px;
+	left:0px;
+	margin: auto;
+	border-radius:50%; 
+	transform: all;
+}
+
+.h5-component-point .point .name{	
+	position: absolute;
+	top:50%;
+	margin:-15px 0 0 0; 
+	height: 30px;
+	width: 100%;
+	text-align: center;
+	font-size: 22px;
+
+}
+.h5-component-point .point .per{
+	font-size: .5em;
+}
+
+/*柱状图组件样式*/
+.h5-component-bar .line {
+  margin:0 0 15px;
+  padding:0 25px 0 65px; 
+  height: 15px;
+  font-size: 12px;
+  line-height: 15px;
+
+}
+.h5-component-bar .name{	
+	float: left;
+	margin-left:-65px; 
+	width: 60px;
+	color:#000;
+	text-align: center;
+}
+.h5-component-bar  .rate {
+	position: relative; 
+	float: left;
+    height: 15px;
+}
+.h5-component-bar .rate .bg{
+	position: absolute;
+	left: 0;
+	top:0;
+	width: 0%;
+	height: 100%;
+	border-radius:3px;
+    background-color: #99c0ff;
+    transition:  all 1s;
+
+}
+.h5-component-bar .per{
+	width: 20px;
+	margin-right:-25px; 
+	float: right;
+	color:#99c0ff;
+	opacity:0;
+	transition:  all 1s .5s;
+}
+.h5-component-bar-load .rate .bg{
+   width: 100%;
+}
+.h5-component-bar-load .per{
+   opacity:1;
+}
+
+/*垂直柱状图组件样式*/
+.h5-component-bar-v .line {
+  position: relative;
+  float: left;
+  margin:0;
+  padding:0  0 25px; 
+  width: 20%;
+  height: 100%;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+
+}
+.h5-component-bar-v .name{	
+    position: absolute;
+    bottom: 0; 
+	width: 100%;
+	height: 25px;
+	line-height: 25px;
+	color:#000;
+}
+.h5-component-bar-v  .rate {
+	position: absolute;
+	margin-left:-8px; 
+    bottom: 25px; 
+    left: 50%;
+    padding:0 0;
+    height: 100%;
+    width: 15px;
+}
+.h5-component-bar-v .rate .bg{
+	position: absolute;
+	bottom:0px;
+	width: 100%;
+	height: 0%;
+	border-radius:3px;
+    background-color: #99c0ff;
+    transition:  all 1s;
+
+}
+.h5-component-bar-v .per{	
+	position: absolute;
+	top:-20px;
+	height: 20px;
+	line-height: 20px;
+	width: 100%; 
+	color:#99c0ff;
+	opacity:0;
+	transition:  all 1s .5s;
+
+}
+.h5-component-bar-v-load .rate .bg{
+  height: 100%;
+}
+.h5-component-bar-v-load .per{
+   opacity:1;
+}
+
+
+/*折线图组件样式*/
+.h5-component-polyline{}
+
+.h5-component-polyline canvas{
+	position: absolute;
+	top:0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.h5-component-polyline .prj-name{
+	position: absolute;
+	bottom: -20px;
+	height: 20px;
+	/*text-indent: 100px;*/
+	line-height: 20px;
+	text-align: center;
+	font-size: 12px;
+	opacity: 0;
+	overflow: hidden;
+	transition:all 1s 1.5s;
+}
+.h5-component-polyline-load .prj-name{
+	opacity: 1;
+	text-indent: 0;
+}
+.h5-component-polyline-leave .prj-name{
+	opacity: 0;
+	/*text-indent: 100px;*/
+	transition-delay: .5s !important;
+}
+/* 雷达图样式 */
+.h5-component-radar canvas{
+    position: absolute;
+	top:0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.h5-component-radar .text{
+	position: absolute;
+	opacity: 0;
+	transition: all 1s;
+}
+.h5-component-radar-load .text{
+	opacity: 1;
+}
+.h5-component-radar-leave .text{
+	opacity: 0;
+}
+.h5-component-radar .rate{
+	position: absolute;
+	opacity: 0;
+	transition: all 10s 10s;
+	-webkit-transition: all 10s 10s;
+}
+.h5-component-radar.h5-component-radar-load .rate{
+	opacity: 1;
+
+}
+.h5-component-radar-leave .rate{
+	opacity: 0;
+}
+
+/* 饼图样式 */
+.h5-component-pie canvas{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+}
+.h5-component-pie .line{
+	position: absolute;
+	padding:0 5px;
+	display: none;
+	min-width: 50px;
+	height: 0;
+	font-size: 12px;
+	text-align: center;
+	transition: all 1s 1s;
+}
+.h5-component-pie .line>span.top{
+	position: absolute;
+	top:-30px;
+	left: 0px;
+	right: 0px;
+}
+.h5-component-pie-load .line{
+	display: block;
+}
+.h5-component-pie-leave .line{
+	display: none;
+}
+
+.h5-component-circlePie canvas{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+}
+.h5-component-circlePie .title{
+	opacity: 0;
+	position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 36px;
+	font-size:12px;
+	margin: auto;
+	text-align: center;
+	transition:  all 1.5s .5s;
+
+}
+.h5-component-circlePie.h5-component-circlePie-load .title{
+	opacity: 1;
+	transition:  all .1s 0s;
+}
+.h5-component-circlePie.h5-component-circlePie-leave .title{
+	display: none;
+	opacity: 0
+}
+/* 首页样式 */
+.h5-page-face{
+	background-image: url(../imgs/face_bg.png);
+}
+.h5-component-name-slogan{
+	animation: seesaw 2s infinite 2s;
+	-moz-animation: seesaw 2s infinite 2s;	/* Firefox */
+	-webkit-animation:seesaw 2s infinite 2s;	/* Safari 和 Chrome */
+	-o-animation: seesaw 2s infinite 2s;	/* Opera */
+	-webkit-animation:seesaw 2s infinite 2s;
+}
+@-webkit-keyframes seesaw{
+	0%{-webkit-transform: rotate(0deg)}
+	5%{-webkit-transform: rotate(3deg)}
+	10%{-webkit-transform: rotate(-4deg)}
+	15%{-webkit-transform: rotate(3deg)}
+	20%{-webkit-transform: rotate(-2deg)}
+	25%{-webkit-transform: rotate(1deg)}
+	30%{-webkit-transform: rotate(-1deg)}
+	70%{-webkit-transform: rotate(0deg)}
+}
+
+.h5-component-name-caption{
+    background-image: url(../imgs/page_caption_bg.png);
+    width: 283px;
+    height: 160px;
+    text-align: center;
+    line-height: 140px;
+    font-size: 20px;
+    color: #fff;
+}
+.h5-component-name-back{
+    top: 30px;
+    -webkit-animation:back 2s infinite 2s;
+}
+
+@-webkit-keyframes back{
+    50%{ top: 20px; }
+}
