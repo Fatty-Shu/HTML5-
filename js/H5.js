@@ -102,7 +102,7 @@ var H5 = function() {
             $.fn.fullpage.moveTo(firstPage);
         }
     }
-
+    this.loader = typeof h5_loading === "function" ? h5_loading:this.loader;
     return this;
 
 }
@@ -828,4 +828,58 @@ var H5ComponentCirclePie = function(name, cfg) {
     return component;
     //line>name rate>bg per
 
+}
+
+/**
+ * 载入效果。。。。
+ * @param  {array} images    图片数组
+ * @param  {number} firstPage 跳转到第N页
+ * @return {this}           当前的h5对象
+ */
+var h5_loading = function(images,firstPage){
+    var id = this.id;
+    if(this._images === undefined){
+        window[id] = this;
+        this._images = (images || []).length;
+        this.loaded= 0;
+        for (var i = this._images - 1; i >= 0; i--) {
+           var  itme = images[i],
+                img  = new Image;
+            img.onload=function(){
+                window[id].loader(images,firstPage);
+            }
+            img.src= itme;
+
+        }
+       return this;
+    }else{
+
+       this.loaded++;
+       $(".loading #rate").text( ((this.loaded/this._images*100)>>0)+"%" );
+       if(this.loaded<this._images){
+            return this;
+       }
+
+    }
+
+    this.el.show();
+    this.el.fullpage({
+        onLeave: function(index, nextIndex, direction) {
+            $(this).find(".h5-component").each(function(){
+                $(this).triggerHandler("onLeave");
+            });
+        },
+        afterLoad: function(index, nextIndex, direction) {
+            $(this).find(".h5-component").each(function(){
+                $(this).triggerHandler("onLoad");
+            })
+        }
+    });
+    this.page[0].find(".h5-component").each(function(){
+        $(this).triggerHandler("onLoad");
+    })
+
+    if(firstPage){
+        $.fn.fullpage.moveTo(firstPage);
+    }
 }
